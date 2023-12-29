@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "./image 4.png";
 import { FaShoppingCart } from "react-icons/fa";
 import { order } from "./data2placeorder";
+import Succesfully from './Succesfully'
 
 const PlaceOrder = () => {
   const [data, setData] = useState([]);
@@ -95,6 +96,13 @@ const PlaceOrder = () => {
                 </div>
               </div>
             </div>
+            <div className="flex justify-end mr-10">
+                <a href='/succesfull' className="p-4  bg-[yellow] rounded ">
+Place Order
+            
+                </a>
+            </div>
+
           </>
         );
       })}

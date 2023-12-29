@@ -9,7 +9,7 @@ const port = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-const url = "mongodb://localhost:27017";
+const url = "mongodb+srv://admin:admin123@cluster0.2rbjkel.mongodb.net/?";
 const dbName = "reactecome";
 console.log("mm");
 

@@ -45,8 +45,7 @@ setFormData(obj)
     <div className='flex justify-center'>
     <div className='flex flex-col border-2 rounded-lg  w-96 px-7 py-5'>
         <h1 className='text-2xl pb-2'>Create Account</h1>
-        <label htmlFor="name">
-            Your Name
+        <label htmlFor="name">            Your Name
         </label>
         <input type="text" onChange={handleinputchange} name='name'/>
         <label htmlFor="mobile"> 
