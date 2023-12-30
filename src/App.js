@@ -19,7 +19,7 @@ function App() {
    <>
    <Router>
     <Routes>
-      <Route path='/' element={<Home islogin={islogin} setOrderdata={setOrderdata}/>}/>
+      <Route path='/' element={<Home islogin={islogin} setLogin={setLogin} setOrderdata={setOrderdata}/>}/>
       <Route path='/succesfull' element={<Succesfully/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/placeorder' element={<PlaceOrder orderdata={orderdata} setOrderdata={setOrderdata}/>}/>

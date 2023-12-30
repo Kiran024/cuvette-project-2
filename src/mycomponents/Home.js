@@ -4,18 +4,19 @@ import phone from './phone.png'
 import logo from './image 4.png'
 import girl from './girl.png'
 import head from './headphone-removebg-preview.png'
-import { Link } from 'react-router-dom'
+import { Link, useHref } from 'react-router-dom'
 import { products } from './data1'
 
 
 
-const Home = ({islogin,setOrderdata}) => {
+const Home = ({islogin,setOrderdata,setLogin}) => {
     const [data, setData] = useState([])
     const [filteredArray,setFilteredArray] = useState([])
     const [company,setCompany] = useState('company')
     const [color,setColor] = useState('color')
     const [type,setType] = useState('headphone')
     const [price,setPrice] = useState('price')
+    const [searchData,setSearchDate] = useState('')
 
     function handleorder(item){
         setOrderdata((order)=>{
@@ -41,6 +42,15 @@ const Home = ({islogin,setOrderdata}) => {
         setFilteredArray(newdata)
 
     },[company,color ,type,price])
+
+
+    useEffect(()=>{
+        const newData = data.filter((item)=>item.company.includes(searchData))
+        setFilteredArray(newData)
+
+
+    },[searchData])
+
     return (
         <>
             <div className='sm:hidden md:flex justify-around bg-[#2E0052] text-white'>
@@ -60,9 +70,16 @@ const Home = ({islogin,setOrderdata}) => {
             :
             <div>
 
-            <Link to='/placeorder'>Checkout </Link>
+            <div className='bg-green-900 pr-5 pl-5 pt-2 pb-2'>
+
+            <Link to='/placeorder'>View Cart </Link>
+
         
         </div>
+        <div>
+            <button onClick={()=>{ setLogin(false); }}>Logout</button>
+        </div>
+            </div>
 
             
             }
@@ -90,7 +107,7 @@ const Home = ({islogin,setOrderdata}) => {
 
             </div>
             <div className='flex justify-center mt-12 '>
-                <input type="text" placeholder='Search Product' className='w-4/5 rounded-full h-12 ' />
+                <input type="text" placeholder='Search Product' className='w-4/5 rounded-full h-12 ' value={searchData} onChange={(e)=>setSearchDate(e.target.value)} />
             </div>
             <div className='lg:lg:flex flex-wrap flex justify-center '>
                 <select name="" id="" className='bg-[#D9D9D9] rounded-lg p-1 m-2' value={type} onChange={(e)=>setType(e.target.value)}>
@@ -141,9 +158,9 @@ const Home = ({islogin,setOrderdata}) => {
                     filteredArray.map((item) => {
                         return (
                             <>
-<div onClick={() => { handleorder(item); alert('product added'); }}>
+<div onClick={() => { handleorder(item); alert('product added');}}>
                                     <div className='bg-[#0066FF2B] '>
-                                        <img src={item.image} alt="" className='h-20'/>
+                                       <img src={item.image} alt="" className='h-20'/>
                                     </div>
                                     <h2 className='font-extrabold'>{item.name}</h2>
                                     <h3>Price - ₹ {item.price}</h3>
