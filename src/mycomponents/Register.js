@@ -27,7 +27,7 @@ setFormData(obj)
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/register', formData);
+      const response = await axios.post('https://cuvetserver.vercel.app/register', formData);
       console.log(response.data);
       // Redirect to the login page or perform other actions
     } catch (error) {
