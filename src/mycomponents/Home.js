@@ -9,13 +9,25 @@ import { products } from './data1'
 
 
 
-const Home = ({islogin}) => {
+const Home = ({islogin,setOrderdata}) => {
     const [data, setData] = useState([])
     const [filteredArray,setFilteredArray] = useState([])
     const [company,setCompany] = useState('company')
     const [color,setColor] = useState('color')
     const [type,setType] = useState('headphone')
     const [price,setPrice] = useState('price')
+
+    function handleorder(item){
+        setOrderdata((order)=>{
+            let obj = [
+            ...order,
+            item
+            
+
+            ]
+            return obj
+        })
+    }
     useEffect(() => {
         let d = products
         setData(products)
@@ -129,7 +141,7 @@ const Home = ({islogin}) => {
                     filteredArray.map((item) => {
                         return (
                             <>
-                                <div>
+<div onClick={() => { handleorder(item); alert('product added'); }}>
                                     <div className='bg-[#0066FF2B] '>
                                         <img src={item.image} alt="" className='h-20'/>
                                     </div>
