@@ -27,7 +27,8 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
           <p>Get 50% off on selected items | Shop Now</p>
         </div>
         <div>
-          <Link to="/placeorder">Checkout </Link>
+          <Link to="/placeorder">Check
+          out </Link>
         </div>
       </div>
       <div className="flex ml-36 mt-5">
