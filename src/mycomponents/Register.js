@@ -41,8 +41,9 @@ setFormData(obj)
   return (
     <>
        <div className='flex justify-center m-4'>
-        <img src={logo} alt="" className='h-8'/>
-        <h1 className='text-2xl font-bold'>Musicart</h1>
+       <Link to='/'>
+        <img src={logo} alt="" className="h-8" />
+        </Link>        <h1 className='text-2xl font-bold'>Musicart</h1>
     </div>
         <form   onSubmit={handleRegister}>
     <div className='flex justify-center'>

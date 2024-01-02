@@ -85,8 +85,10 @@ const Home = ({islogin,setOrderdata,setLogin}) => {
             }
             </div>
             <div className='flex ml-36 mt-5'>
-                <img src={logo} alt="" className='h-8' />
-                <h1 className='text-2xl font-bold pl-2 pr-2'>Musicart</h1>
+            <Link to='/'>
+        <img src={logo} alt="" className="h-8" />
+        </Link>
+        <h1 className='text-2xl font-bold pl-2 pr-2'>Musicart</h1>
                 <p className='pt-2'>Home</p>
             </div>
             <div className='flex justify-center items-center mt-12'>
@@ -107,7 +109,7 @@ const Home = ({islogin,setOrderdata,setLogin}) => {
 
             </div>
             <div className='flex justify-center mt-12 '>
-                <input type="text" placeholder='Search Product' className='w-4/5 rounded-full h-12 ' value={searchData} onChange={(e)=>setSearchDate(e.target.value)} />
+                <input type="text" placeholder='Search Product' className='w-4/5 rounded-full h-12 pl-3 border-black  shadow-xl ' value={searchData} onChange={(e)=>setSearchDate(e.target.value)} />
             </div>
             <div className='lg:lg:flex flex-wrap flex justify-center '>
                 <select name="" id="" className='bg-[#D9D9D9] rounded-lg p-1 m-2' value={type} onChange={(e)=>setType(e.target.value)}>
@@ -123,6 +125,7 @@ const Home = ({islogin,setOrderdata,setLogin}) => {
                     <option value="boat">Boat</option>
                     <option value="sony">Sony</option>
                     <option value="jbl">JBL</option>
+                    <option value="zebronics">Zebronics</option>
                 </select>
                 <select name="" id="" className='bg-[#D9D9D9] rounded-lg p-1 m-2' value={color} onChange={(e)=>setColor(e.target.value)}>
                     <option value="color">Color</option>
@@ -138,9 +141,10 @@ const Home = ({islogin,setOrderdata,setLogin}) => {
                 </select>
                 <select name="" id="" className='lg:flex flex-wrap  bg-[#D9D9D9] rounded-lg p-1 m-2'>
                     <option value="">Sort by: Featured</option>
-                    <option value="">100$</option>
-                    <option value="">200$</option>
-                    <option value="">300$</option>
+                    <option value="">Price:Lowest</option>
+                    <option value="">Price:Highest</option>
+                    <option value="">Name:(A-Z)</option>
+                    <option value="">Name:(Z-A)</option>
                 </select>
             </div>
 

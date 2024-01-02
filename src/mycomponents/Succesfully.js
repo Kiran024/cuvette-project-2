@@ -1,13 +1,14 @@
 import React from 'react'
 import logo from './image 4.png'
 import celebrate from './celebrate.png'
-
+import { Link } from 'react-router-dom'
 const Succesfully = () => {
   return (
 <>
 <div className='flex ml-36 mt-5'>
-    <img src={logo} alt="" className='h-8'/>
-        <h1 className='text-2xl font-bold pl-2 pr-2'>Musicart</h1>
+<Link to='/'>
+        <img src={logo} alt="" className="h-8" />
+        </Link>        <h1 className='text-2xl font-bold pl-2 pr-2'>Musicart</h1>
         <p className='pt-2'>Home</p>
         </div>
      <div className=' flex justify-center items-center h-96'>

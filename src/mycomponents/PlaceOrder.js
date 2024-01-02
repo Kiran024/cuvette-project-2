@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import phone from "./phone.png";
 import { Link } from "react-router-dom";
 import logo from "./image 4.png";
 import { FaShoppingCart } from "react-icons/fa";
 import Succesfully from './Succesfully';
+import { products } from "./data1";
 
 const PlaceOrder = ({ orderdata,setOrderdata }) => {
   const [data, setData] = useState([]);
+  const [total,setTotal] = useState(0)
 
   const handleDelete = (index) => {
     const updatedOrderData = [...orderdata];
     updatedOrderData.splice(index, 1);
     setOrderdata(updatedOrderData)
+    
 
     // setData(updatedOrderData);
   };
 
+  useEffect(()=>{
+    console.log('jhgj',orderdata)
+    const totalCartPrice = orderdata.reduce((total, product) => total + product.price, 0);
+    setTotal(totalCartPrice)
+
+  },[])
+
+  
+  
   return (
     <>
       <div className="sm:hidden md:flex justify-around bg-[#2E0052] text-white">
@@ -32,9 +44,18 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
         </div>
       </div>
       <div className="flex ml-36 mt-5">
+      <Link to='/'>
         <img src={logo} alt="" className="h-8" />
-        <h1 className="text-2xl font-bold pl-2 pr-2">Musicart</h1>
+        </Link>        <h1 className="text-2xl font-bold pl-2 pr-2">Musicart</h1>
         <p className="pt-2">Home / View Cart</p>
+      </div>
+      <div className="flex ml-36 mt-5 ">
+        <Link
+          to='/'
+          className="bg-[#2E0052] text-white p-2 rounded-lg"
+        >
+          Back to products
+        </Link>
       </div>
       <div className="flex justify-center mt-10">
         <FaShoppingCart size={40} />
@@ -50,9 +71,9 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
                   <img src={value.image} alt="" />
                 </div>
                 <div className="m-8">
-                  <h1>{value.ProductName}</h1>
+                  <h1>{value.name}</h1>
                   <h1>color:{value.color}</h1>
-                  <h1>Stock:{value.stock}</h1>
+                  <h1>Stock:{value.Stock}</h1>
                 </div>
                 <div className="m-8">
                   <h1>
@@ -62,17 +83,26 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
                   </h1>
                 </div>
                 <div className="m-8">
-                  {/* <h1>
+                  { <h1>
                     Quantity:
                     <br />
-                    {value.Quantity}
-                  </h1> */}
+                    <select fdprocessdid="n6u7m" >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                    </select>
+                  </h1> }
                 </div>
                 <div className="m-8">
-                  {/* <h1>
+                  { <h1>
                     Total:
-                    <br />₹ {value.total}
-                  </h1> */}
+                    <br />₹ {value.price}
+                  </h1> }
                 </div>
                 <div>
                   <button
@@ -87,7 +117,8 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
               </div>
               <div>
                 <div className="mt-10 mr-9 p-6">
-                  {/* <h1>Price Details</h1>
+                  { /*
+                 <h1>Price Details</h1>
                   <h1 className="pt-2">Total MRP:{value.total}</h1>
                   <h1 className="pt-2">Discount on MRP:{value.discount}</h1>
                   <h1 className="pt-2">Convenience Fee:{value.Convenience}</h1> */}
@@ -103,21 +134,22 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
                   <h1>{value.total}</h1>
                 </div>
               </div>
-              <div className="flex">
-                <div>
-                  <h1>Total Amount</h1>
-                </div>
-                <div>
-                  <h1>{value.totalamount}</h1>
-                </div>
-              </div>
+              
             </div>
           </div>
         );
       })}
+      <div className="flex">
+                <div>
+                  <h1>Total Amount: </h1>
+                </div>
+                <div>
+                  <h1>{total}</h1>
+                </div>
+              </div>
 
       <div className="flex justify-end mr-10">
-        <Link to='/succesfull' className="p-4 bg-[yellow] rounded">
+        <Link to='/checkout' className="p-4 bg-[yellow] rounded">
           Place Order
         </Link>
       </div>
@@ -126,3 +158,9 @@ const PlaceOrder = ({ orderdata,setOrderdata }) => {
 };
 
 export default PlaceOrder;
+
+/*{ 
+                 <h1>Price Details</h1>
+                  <h1 className="pt-2">Total MRP:{value.total}</h1>
+                  <h1 className="pt-2">Discount on MRP:{value.discount}</h1>
+                  <h1 className="pt-2">Convenience Fee:{value.Convenience}</h1> }*/
